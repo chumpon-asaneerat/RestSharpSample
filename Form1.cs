@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-
 using RestSharp;
+using RestSharp.Serializers.NewtonsoftJson;
 //using RestSharp.Authenticators;
 
 namespace RestSharpSample
@@ -20,6 +20,7 @@ namespace RestSharpSample
             var url = txtUrl.Text;
             var client = new RestClient(url);
             //client.Authenticator = new HttpBasicAuthenticator("username", "password");
+            client.UseNewtonsoftJson();
             var request = new RestRequest();
             request.Resource = "api/users";
             request.Method = Method.GET;
